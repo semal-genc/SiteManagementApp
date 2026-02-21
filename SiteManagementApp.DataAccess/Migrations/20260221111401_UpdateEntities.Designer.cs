@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SiteManagementApp.DataAccess.Concrete;
 
@@ -11,9 +12,11 @@ using SiteManagementApp.DataAccess.Concrete;
 namespace SiteManagementApp.DataAccess.Migrations
 {
     [DbContext(typeof(SiteManagementDbContext))]
-    partial class SiteManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260221111401_UpdateEntities")]
+    partial class UpdateEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
