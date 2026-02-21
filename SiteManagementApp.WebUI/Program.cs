@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using SiteManagementApp.DataAccess.Concrete;
+
 namespace SiteManagementApp.WebUI
 {
     public class Program
@@ -8,6 +11,11 @@ namespace SiteManagementApp.WebUI
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<SiteManagementDbContext>(options=>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
 
             var app = builder.Build();
 
