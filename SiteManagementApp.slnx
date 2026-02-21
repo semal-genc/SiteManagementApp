@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="SiteManagementApp.Business/SiteManagementApp.Business.csproj" />
+  <Project Path="SiteManagementApp.DataAccess/SiteManagementApp.DataAccess.csproj" />
+  <Project Path="SiteManagementApp.Entities/SiteManagementApp.Entities.csproj" />
+  <Project Path="SiteManagementApp.WebUI/SiteManagementApp.WebUI.csproj" />
+</Solution>
