@@ -1,15 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SiteManagementApp.Entities.Concrete;
 
 namespace SiteManagementApp.DataAccess.Concrete
 {
-    public class SiteManagementDbContext : DbContext
+    public class SiteManagementDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
         public SiteManagementDbContext(DbContextOptions<SiteManagementDbContext> options) : base(options)
         {
         }
 
-        public DbSet<User> Users { get; set; }
         public DbSet<Apartment> Apartments { get; set; }
         public DbSet<Block> Blocks { get; set; }
         public DbSet<Invoice> Invoices { get; set; }

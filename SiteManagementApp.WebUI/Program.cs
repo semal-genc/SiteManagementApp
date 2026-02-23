@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SiteManagementApp.DataAccess.Concrete;
+using SiteManagementApp.Entities.Concrete;
+using SiteManagementApp.WebUI.Extensions;
 
 namespace SiteManagementApp.WebUI
 {
@@ -17,6 +20,13 @@ namespace SiteManagementApp.WebUI
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            builder.Services.AddIdentity<User, IdentityRole<int>>()
+                .AddEntityFrameworkStores<SiteManagementDbContext>()
+                .AddDefaultTokenProviders();
+
+            builder.Services.AddBusinessServices();
+            builder.Services.AddDataAccessServices();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -30,6 +40,7 @@ namespace SiteManagementApp.WebUI
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapStaticAssets();
